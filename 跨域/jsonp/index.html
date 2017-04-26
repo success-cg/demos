@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>news</title>
+<style>
+    ul,
+    li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    #news>li {
+        width: 600px;
+        border: 1px solid #000080;
+        border-radius: 5px;
+        font-size: 1.25rem;
+        margin: 0 auto;
+        text-align: left;
+        padding: 5px;
+        margin-top: 10px;
+    }
+
+    .btn {
+        width: 200px;
+        display: block;
+        margin: 0 auto;
+        margin-top: 20px;
+        font-size: 1.5rem;
+        padding: 10px;
+        background: #AFEEEE;
+    }
+</style>
+</head>
+<body>
+    <ul id="news">
+      <li>第11日前瞻：中国冲击4金 博尔特再战</li>
+      <li>男双力争会师决赛 </li>
+      <li>女排将死磕巴西！</li>
+    </ul>
+    <button id="more" class="btn">换一组</button>
+
+<script>
+
+  $('#more').addEventListener('click', function(){
+    var script = document.createElement('script');
+    script.src = 'http://b.jrg.com:8080/getNews?callback=appendHtml';
+    document.head.appendChild(script);
+    document.head.removeChild(script);
+  })
+  function appendHtml(news){
+    var html = '';
+    for( var i=0; i<news.length; i++){
+      html += '<li>' + news[i] + '</li>';
+    }
+    console.log(html);
+    $('#news').innerHTML = html;
+  }
+  function $(id){
+    return document.querySelector(id);
+  }
+</script>
+
+</body>
+
+</html>
