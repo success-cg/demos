@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .layout {
+            width: 600px;
+            margin: 0 auto;
+            border: 5px dotted;
+            background: #fff8dc;
+            padding: 20px;
+        }
+
+        #btn {
+            width: 150px;
+            height: 120px;
+            font-size: 1.2rem;
+            background-color: #fff;
+            margin-bottom: 50px;
+        }
+
+        .box {
+            width: 200px;
+            height: 300px;
+            border: 1px solid;
+        }
+
+        .scroll {
+            position: fixed;
+            width: 300px;
+            left: 50%;
+            top: 30%;
+        }
+
+        #user {
+            width: 200px;
+            height: 30px;
+            font-size: 1.5rem;
+            border: 2px solid #aaa;
+        }
+
+        .city {
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            font-size: 1.2rem;
+            border: 1px solid #aaa;
+            border-radius: 3px;
+        }
+
+        #val {
+            color: #a00;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="layout">
+        <h3>当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色</h3>
+        <button id="btn">点我</button>
+
+        <h4 class="scroll">当窗口滚动时，获取垂直滚动距离: <span>0</span>px</h4>
+
+        <h3>当鼠标放置到$div 上，把$div 背景色改为红色，移出鼠标背景色变为白色</h3>
+        <div class="box"></div>
+
+        <h3>当鼠标激活 input 输入框时让输入框边框变为蓝色，当输入框内容改变时
+           把输入框里的文字小写变为大写，当输入框失去焦点时去掉边框蓝色，
+           控制台展示输入框里的文字</h3>
+        <input id="user" type="text" placeholder="输入">
+
+        <h3>当选择 select 后，获取用户选择的内容:<span id="val"></span></h3>
+        <select class="city" name="city">
+            <option value="北京" selected>北京</option>
+            <option value="上海">上海</option>
+            <option value="广州">广州</option>
+            <option value="深圳">深圳</option>
+            <option value="宁波">宁波</option>
+            <option value="杭州">杭州</option>
+        </select>
+    </section>
+
+
+    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        var $btn = $("#btn")
+        var $div = $(".box")
+        var $user = $("#user")
+        var $city = $(".city")
+
+        $btn.on("click", function() {
+            $btn.css("background", "#f00")
+            setTimeout(function() {
+                $btn.css("background", "#00f")
+            }, 600)
+        })
+
+        $(window).on("scroll", function() {
+            var scrollTop = $(window).scrollTop()
+            $(".scroll span").text(scrollTop)
+        })
+
+        $div.on("mouseenter", function() {
+            $(this).css("background", "#f00")
+        })
+
+        $div.on("mouseleave", function() {
+            $(this).css("background", "#fff")
+        })
+
+        $user.on("focusin", function() {
+            $(this).css("borderColor", "#00f")
+        })
+
+        $user.on("focusout", function() {
+            $(this).css("borderColor", "#aaa")
+            console.log($(this).val())
+        })
+
+        $user.on("keypress", function() {
+            var val = $(this).val()
+            $(this).val(val.toUpperCase())
+        })
+
+        $("#val").text($city.val())
+        $city.on("change", function() {
+            $("#val").text($city.val())
+        })
+    </script>
+
+</body>
+
+</html>
