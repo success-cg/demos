@@ -45,7 +45,6 @@
     </ul>
     <button id="more" class="btn">加载更多</button>
 
-    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script>
         var $news = $("#news")
@@ -60,7 +59,7 @@
             lock = false;
             var $index = $news.children("li").length;
             $.ajax({
-                url: "/loadMore",
+                url: "https://github.com/18810666595/demos/blob/master/ad15-jquery-加载更多/",
                 type: "get",
                 data: {
                     len: $len,
