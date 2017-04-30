@@ -103,7 +103,7 @@
 
         $(window).on("scroll", function() {
             var scrollTop = $(window).scrollTop()
-            $(".scroll span").text(scrollTop)
+            $(".scroll span").text(parseInt(scrollTop))
         })
 
         $div.on("mouseenter", function() {
