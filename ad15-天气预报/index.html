@@ -59,7 +59,7 @@
     //$("#weather").on("click", function(){
         $.ajax({
             type:"get",
-            url:"http://api.jirengu.com/weather.php"
+            url:"https://jirenguapi.applinzi.com/weather.php"
         }).done(function(ret){
             var weather=JSON.parse(ret)
             console.log(weather);
