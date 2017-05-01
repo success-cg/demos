@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .date {
+            width: 150px;
+            background: #00FA9A;
+            font-size: 1.2rem;
+            margin: 5px;
+            padding: 5px;
+        }
+        .city {
+            width: 150px;
+            background: #0ff;
+            font-size: 1.2rem;
+            margin: 5px;
+            padding: 5px;
+        }
+        .pm {
+            width: 150px;
+            background: #ccc;
+            font-size: 1.2rem;
+            margin: 5px;
+            padding: 5px;
+        }
+        .msg0 {
+            width: 250px;
+            background: #7FFFD4;
+            font-size: 1rem;
+            margin: 5px;
+            padding: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="date">日期:<br><span></span></div>
+    <div class="city">城市:<br><span></span></div>
+    <div class="pm">pm2.5:<br><span></span></div>
+    <div class="msg">
+        <div class="msg0">
+            <li class="title"></li>
+            <li class="tipt"></li>
+            <li class="zs"></li>
+            <li class="des"></li>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+
+
+    //$("#weather").on("click", function(){
+        $.ajax({
+            type:"get",
+            url:"http://api.jirengu.com/weather.php"
+        }).done(function(ret){
+            var weather=JSON.parse(ret)
+            console.log(weather);
+            appendHtml(weather)
+
+        })
+    //})
+
+
+        function appendHtml(opt){
+            var $date = opt.date;
+            console.log($date);
+            $(".date span").text($date);
+
+            var $city = opt.results["0"].currentCity;
+            console.log($city)
+            $(".city span").text($city)
+
+            var $pm = opt.results["0"].pm25
+            console.log($pm);
+            $(".pm span").text($pm)
+
+            var $msg0 = opt.results["0"].index["0"]
+            console.log($msg0);
+
+            var $title0 = $msg0.title
+            $(".msg0 .title").text($title0)
+
+            var $tipt = $msg0.tipt
+            $(".msg0 .tipt").text($tipt)
+
+            var $des = $msg0.des
+            $(".msg0 .des").text($des)
+
+            var $zs = $msg0.zs
+            $(".msg0 .zs").text($zs)
+
+        }
+    </script>
+</body>
+</html>
