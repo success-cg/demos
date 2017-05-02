@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 600px;
+            border: 1px solid;
+        }
+        .ct {
+            width: 100px;
+            height: 80px;
+            border: 10px solid;
+            padding: 10px;
+            margin: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="ct">hello</div>
+    <div class="box"></div>
+</body>
+</html>
+
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+var $node = $(".ct")
+$(window).on("scroll", function(){
+    if(isVisible($node) && $node.not('.show').length > 0){
+        console.log(true);
+        $node.addClass("show");
+    }
+})
+
+
+
+function isVisible($node){
+    var $offset = $node.offset().top;
+    var $scrollTop = $(window).scrollTop();
+    var $height = $node.outerHeight();
+    var $windowHeight = $(window).height();
+    if($windowHeight + $scrollTop > $offset && $scrollTop < $offset + $height){
+        return true
+    }else{
+        return false
+    }
+}
+</script>

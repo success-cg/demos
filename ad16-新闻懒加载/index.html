@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul,
+        li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #news>li {
+            width: 600px;
+            border: 1px solid #000080;
+            border-radius: 5px;
+            font-size: 1.25rem;
+            margin: 0 auto;
+            text-align: center;
+            padding: 5px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            width: 200px;
+            display: block;
+            margin: 0 auto;
+            margin-top: 20px;
+            font-size: 1.5rem;
+            padding: 10px;
+            background: #AFEEEE;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <ul id="news">
+
+    </ul>
+    <button id="more" class="btn">加载更多</button>
+
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        var $news = $("#news")
+        var $btn = $("#more")
+        var $len = 3;
+        var lock = true;
+        var isOver = false;
+
+        getNews()
+
+        $(window).on("scroll", function(){
+            if(isVisible($btn) && lock && !isOver ){
+                getNews()
+            }
+        })
+
+        function getNews(){
+            if(!lock){
+                return
+            }
+            lock = false;
+            $.ajax({
+                url: "/loadMore",
+                type: "get",
+                data: {
+                    len: $len,
+                    index: $news.children("li").length
+                }
+            }).done(function(ret){
+                lock = true
+                appendHtml(ret)
+                if(isVisible($btn) && lock && !isOver){
+                    getNews()
+                }
+            }).fail(function(){
+                console.log("服务器异常")
+            })
+        }
+
+        function appendHtml(news){
+            if(news.length === 0){
+                isOver = true
+                $news.append("<h3>"+"没有更多了"+"</h3>")
+                return
+            }
+            for(var i=0; i<news.length; i++){
+                $news.append("<li>"+news[i]+"</li>")
+            }
+        }
+
+        function isVisible($node){
+            var $offset = $node.offset().top;
+            var $scrollTop = $(window).scrollTop();
+            var $height = $node.outerHeight();
+            var $windowHeight = $(window).height();
+            if($windowHeight + $scrollTop > $offset && $scrollTop < $offset + $height){
+                return true
+            }else{
+                return false
+            }
+        }
+
+    </script>
+</body>
+</html>
