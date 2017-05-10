@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播</title>
+    <style>
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear:both;
+        }
+        ul,li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .carousel {
+            position: relative;
+            width: 300px;
+            height: 430px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .carousel>.img-ct {
+            position: absolute;
+            width: 1200px;
+        }
+        .carousel>.img-ct>li {
+            float: left;
+            width: 300px;
+            height: 430px;
+        }
+        .carousel>.img-ct>li img{
+            width: 100%;
+            height: 100%;
+        }
+        .carousel .btn {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            font-size: 1.25rem;
+            color: #fff;
+            border-radius: 50%;
+            background: #666;
+            opacity: 0.6;
+            cursor: pointer;
+        }
+        .btn-pre {
+            left: 10px;
+            top: 50%;
+        }
+        .btn-next {
+            right: 10px;
+            top: 50%;
+        }
+        .carousel .bullet {
+            position: absolute;
+            bottom: 50px;
+            width: 100%;
+            text-align: center;
+        }
+        .carousel .bullet>li {
+            display: inline-block;
+            width: 30px;
+            height: 8px;
+            border: 1px solid #0ff;
+            border-radius: 50%;
+            background: #0ff;
+            margin: 0 2px;
+        }
+        .carousel .bullet .active {
+            background: #fff;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <ul class="img-ct clearfix">
+            <li data-index="0"><a href="#"><img src="https://ooo.0o0.ooo/2017/05/10/591263a539eec.png" alt="图片0"></a></li>
+            <li data-index="1"><a href="#"><img src="https://ooo.0o0.ooo/2017/05/10/591263a77ae5f.png" alt="图片1"></a></li>
+            <li data-index="2"><a href="#"><img src="https://ooo.0o0.ooo/2017/05/10/591263aae2baf.png" alt="图片2"></a></li>
+            <li data-index="3"><a href="#"><img src="https://ooo.0o0.ooo/2017/05/10/591263aae4539.png" alt="图片3"></a></li>
+        </ul>
+        <div class="btn btn-pre">&lt;</div>
+        <div class="btn btn-next">&gt;</div>
+        <ul class="bullet">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+            var $imgCt = $(".img-ct"),
+                $btnPre = $(".btn-pre"),
+                $btnNext = $(".btn-next"),
+                $bullet = $(".bullet"),
+                $curIndex = 0,
+                $imgLock = true,
+                clock
+
+            var $last = $imgCt.children("li").last().clone(),
+                $first = $imgCt.children("li").first().clone()
+
+            var $imgWidth = $imgCt.children("li").first().width(),
+                $imgLen = $imgCt.children("li").length
+
+            $imgCt.prepend($last)
+            $imgCt.append($first)
+
+            $imgCt.css({
+                width: $imgWidth*($imgLen+2),
+                left: -$imgWidth
+            })
+
+            $btnPre.on("click", function(){
+                if($imgLock === false) return;
+                $imgLock = false;
+                pre(1);
+            })
+
+            $btnNext.on("click", function(){
+                if($imgLock === false) return;
+                $imgLock = false;
+                next(1);
+            })
+
+            $bullet.on("click", "li", function(){
+                $bulletIndex = $(this).index()
+                next($bulletIndex-$curIndex)
+            })
+
+            timeClock()
+
+            $(".carousel").on("mouseenter",function(){
+                clearInterval(clock)
+            })
+
+            $(".carousel").on("mouseleave",function(){
+                timeClock()
+            })
+
+            function next(idx){
+                $imgCt.fadeOut(300, function(){
+                    $imgCt.css({
+                        left: "-="+idx*$imgWidth
+                    })
+                })
+                $imgCt.fadeIn(300, function(){
+                    $curIndex += idx;
+                    if($curIndex >= $imgLen){
+                        $imgCt.css({left: -$imgWidth});
+                        $curIndex = 0;
+                    }
+                    $imgLock = true;
+                    setBullet()
+                })
+            }
+
+            function pre(idx){
+                $imgCt.fadeOut(300, function(){
+                    $imgCt.css({
+                        left: "+="+idx*$imgWidth
+                    })
+                })
+                $imgCt.fadeIn(300, function(){
+                    $curIndex -= idx;
+                    if($curIndex < 0) {
+                        $imgCt.css({left: -$imgWidth*$imgLen});
+                        $curIndex = $imgLen-1;
+                    }
+                    $imgLock = true;
+                    setBullet()
+                })
+            }
+
+            function setBullet(){
+                $bullet.children("li").removeClass("active");
+                $bullet.children("li").eq($curIndex).addClass("active")
+            }
+
+            function timeClock(){
+                    clock = setInterval(function(){
+                    next(1)
+                    console.log($curIndex);
+                }, 1500)
+            }
+
+    </script>
+
+</body>
+</html>
