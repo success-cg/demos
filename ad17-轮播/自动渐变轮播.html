@@ -148,12 +148,12 @@
             })
 
             function next(idx){
-                $imgCt.fadeOut(300, function(){
+                $imgCt.fadeOut(500, function(){
                     $imgCt.css({
                         left: "-="+idx*$imgWidth
                     })
                 })
-                $imgCt.fadeIn(300, function(){
+                $imgCt.fadeIn(500, function(){
                     $curIndex += idx;
                     if($curIndex >= $imgLen){
                         $imgCt.css({left: -$imgWidth});
@@ -165,12 +165,12 @@
             }
 
             function pre(idx){
-                $imgCt.fadeOut(300, function(){
+                $imgCt.fadeOut(500, function(){
                     $imgCt.css({
                         left: "+="+idx*$imgWidth
                     })
                 })
-                $imgCt.fadeIn(300, function(){
+                $imgCt.fadeIn(500, function(){
                     $curIndex -= idx;
                     if($curIndex < 0) {
                         $imgCt.css({left: -$imgWidth*$imgLen});
@@ -190,7 +190,7 @@
                     clock = setInterval(function(){
                     next(1)
                     console.log($curIndex);
-                }, 1500)
+                }, 2000)
             }
 
     </script>
