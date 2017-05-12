@@ -111,7 +111,44 @@
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
 <script>
+    var water = (function(){
+        function init(){
+            waterfull()
+            $(window).on("resize", function(){
+                waterfull()
+            })
+        }
 
+        function waterfull(){
+            var $ct = $(".ct"),
+                $item = $(".item")
+            var itemArr = []
+            var itemLen = parseInt($ct.outerWidth(true)/$item.outerWidth(true))
+
+            for(var i=0; i<itemLen; i++){
+                itemArr[i] = 0;
+            }
+
+            $item.each(function(){
+                var minValue = Math.min.apply(null, itemArr)
+                var minIndex = itemArr.indexOf(minValue)
+
+                $(this).css({
+                    top: itemArr[minIndex],
+                    left: $(this).outerWidth(true) * minIndex
+                })
+
+                itemArr[minIndex] += $(this).outerHeight(true)
+            })
+        }
+
+        return {
+            init: init
+        }
+    })()
+
+    water.init()
+/*
     waterfull()
 
     $(window).on("resize", function(){
@@ -141,6 +178,7 @@
             itemArr[minIndex] += $(this).outerHeight(true)
         })
     }
+    */
 </script>
 
 
