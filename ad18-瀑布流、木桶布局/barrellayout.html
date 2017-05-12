@@ -52,7 +52,7 @@
       function addArray(aboutImg){
         imgArr.push(aboutImg.img);
         arrwidth += aboutImg.width;
-        if(arrwidth>$ct.width()+1){
+        if(arrwidth>$ct.width()){
           arrwidth -=aboutImg.width;
           imgArr.pop();
           displayImg();
