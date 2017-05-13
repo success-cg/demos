@@ -103,14 +103,14 @@
                     _this.target.css('display', 'none')
                 }
             })
-            this.target.on('click', function() {
+            _this.target.on('click', function() {
                 _this.ct.animate({
                     scrollTop: 0
-                }, 1000)
+                }, 600)
             })
         }
 
-        var Gotop = new GoTop($('.content'))
+        var Gotop = new GoTop($('body'))
         Gotop.creatNode();
         Gotop.bindEvent();
     </script>
