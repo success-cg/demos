@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul,li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            width: 600px;
+            margin: 0 auto;
+            /*border: 1px solid;*/
+        }
+
+        .content li {
+            margin: 10px;
+            padding: 5px;
+            border: 1px solid #00f;
+            border-radius: 6px;
+            font-size: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <ul>
+            <li>内容1</li>
+            <li>内容2</li>
+            <li>内容3</li>
+            <li>内容4</li>
+            <li>内容5</li>
+            <li>内容6</li>
+            <li>内容7</li>
+            <li>内容8</li>
+            <li>内容9</li>
+            <li>内容10</li>
+            <li>内容11</li>
+            <li>内容12</li>
+            <li>内容13</li>
+            <li>内容14</li>
+            <li>内容15</li>
+            <li>内容16</li>
+            <li>内容17</li>
+            <li>内容18</li>
+            <li>内容19</li>
+            <li>内容20</li>
+            <li>内容21</li>
+            <li>内容22</li>
+            <li>内容23</li>
+            <li>内容24</li>
+            <li>内容25</li>
+            <li>内容26</li>
+            <li>内容27</li>
+            <li>内容28</li>
+            <li>内容29</li>
+            <li>内容30</li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+        var GoTop = function(ct, target) {
+            this.ct = ct;
+            this.target = $('<div class="gotop">回到顶部</div>')
+            this.target.css({
+                position: 'fixed',
+                right: '100px',
+                bottom: '50px',
+                display: 'none',
+                padding: '8px',
+                cursor: 'pointer',
+                border: '1px solid',
+                borderRadius: '4px',
+                background: "#ccc"
+            })
+
+        }
+        GoTop.prototype.creatNode = function() {
+            this.ct.append(this.target);
+        }
+
+        GoTop.prototype.bindEvent = function() {
+            var _this = this;
+            console.log(this); //GoTop
+            var $window = $(window);
+
+            $window.on('scroll', function() {
+                var $top = $window.scrollTop()
+                if ($top > 100) {
+                    _this.target.css('display', 'block')
+                    console.log(this); //window
+                } else {
+                    _this.target.css('display', 'none')
+                }
+            })
+            this.target.on('click', function() {
+                _this.ct.animate({
+                    scrollTop: 0
+                }, 1000)
+            })
+        }
+
+        var Gotop = new GoTop($('.content'))
+        Gotop.creatNode();
+        Gotop.bindEvent();
+    </script>
+</body>
+
+</html>
