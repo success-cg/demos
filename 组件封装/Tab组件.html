@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        ul,
+        li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab {
+            width: 600px;
+            border: 1px solid #ccc;
+            margin: 50px auto;
+        }
+
+        .tab-header li {
+            float: left;
+            /*width: 33.33%;*/
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .tab-header .active {
+            background: #ccc;
+        }
+
+        .tab-content {
+            background: #eee;
+            padding: 10px;
+            height: 200px;
+        }
+
+        .tab-content li {
+            display: none;
+        }
+
+        .tab-content li.see {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="tab">
+        <ul class="tab-header clearfix">
+            <li class="active">tab1</li>
+            <li>tab2</li>
+            <li>tab3</li>
+        </ul>
+        <ul class="tab-content">
+            <li class="see">内容1</li>
+            <li>内容2</li>
+            <li>内容3</li>
+        </ul>
+    </section>
+
+    <section class="tab">
+        <ul class="tab-header clearfix">
+            <li class="active">tab1</li>
+            <li>tab2</li>
+            <li>tab3</li>
+            <li>tab4</li>
+            <li>tab5</li>
+        </ul>
+        <ul class="tab-content">
+            <li class="see">内容1</li>
+            <li>内容2</li>
+            <li>内容3</li>
+            <li>内容4</li>
+            <li>内容5</li>
+        </ul>
+    </section>
+
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+
+        Tab = function(){
+            function _Tab($target){
+                this.$target = $target
+                this.init()
+                this.bind()
+            }
+
+            _Tab.prototype.init = function(){
+                this.header = this.$target.find("ul").eq(0)
+                this.content = this.$target.find("ul").eq(1)
+            }
+
+            _Tab.prototype.bind = function(){
+                var _this = this
+                _this.header.on("click", "li", function(){
+                    var index = $(this).index()
+
+                    _this.header.find("li").removeClass("active")
+                    $(this).addClass("active")
+
+                    _this.content.find("li").removeClass("see")
+                    _this.content.find("li").eq(index).addClass("see")
+                })
+            }
+
+            return {
+                init: function($node){
+                    $node.each(function(){
+                        new _Tab($(this))
+                    })
+                }
+            }
+        }()
+
+        Tab.init($(".tab"))
+
+    </script>
+</body>
+
+</html>
