@@ -1,3 +1,4 @@
+
 define(["jquery"], function($){
     var goTop = function(ct, target) {
         this.ct = ct;
