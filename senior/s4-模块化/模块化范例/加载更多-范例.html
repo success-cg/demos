@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul,
+        li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #news>li {
+            width: 600px;
+            border: 1px solid #000080;
+            border-radius: 5px;
+            font-size: 1.25rem;
+            margin: 0 auto;
+            text-align: center;
+            padding: 5px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            width: 200px;
+            display: block;
+            margin: 0 auto;
+            margin-top: 20px;
+            font-size: 1.5rem;
+            padding: 10px;
+            background: #AFEEEE;
+        }
+    </style>
+</head>
+<body>
+    <ul id="news">
+        <!-- <li>新闻1</li>
+        <li>新闻2</li>
+        <li>新闻3</li>
+        <li>新闻4</li>
+        <li>新闻5</li> -->
+    </ul>
+    <button id="more" class="btn">加载更多</button>
+
+    <script data-main="js/app/main-loadmore.js" src="js/lib/require.min.js"></script>
+
+</body>
+</html>

@@ -66,54 +66,7 @@
         </ul>
     </div>
 
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-
-    <script>
-        var GoTop = function(ct, target) {
-            this.ct = ct;
-            this.target = $('<div class="gotop">回到顶部</div>')
-            this.target.css({
-                position: 'fixed',
-                right: '100px',
-                bottom: '50px',
-                display: 'none',
-                padding: '8px',
-                cursor: 'pointer',
-                border: '1px solid',
-                borderRadius: '4px',
-                background: "#ccc"
-            })
-
-        }
-        GoTop.prototype.creatNode = function() {
-            this.ct.append(this.target);
-        }
-
-        GoTop.prototype.bindEvent = function() {
-            var _this = this;
-            console.log(this); //GoTop
-            var $window = $(window);
-
-            $window.on('scroll', function() {
-                var $top = $window.scrollTop()
-                if ($top > 100) {
-                    _this.target.css('display', 'block')
-                    console.log(this); //window
-                } else {
-                    _this.target.css('display', 'none')
-                }
-            })
-            _this.target.on('click', function() {
-                _this.ct.animate({
-                    scrollTop: 0
-                }, 600)
-            })
-        }
-
-        var Gotop = new GoTop($('body'))
-        Gotop.creatNode();
-        Gotop.bindEvent();
-    </script>
+    <script data-main="js/app/main-gotop.js" src="js/lib/require.min.js"></script>
 </body>
 
 </html>

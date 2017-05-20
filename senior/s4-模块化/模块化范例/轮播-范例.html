@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播</title>
+    <style>
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear:both;
+        }
+        ul,li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .carousel {
+            position: relative;
+            /*width: 300px;
+            height: 430px;*/
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .carousel-1 {
+            width: 300px;
+            height: 430px;
+        }
+        .carousel-2 {
+            width: 600px;
+            height: 400px;
+        }
+        .carousel>.img-ct {
+            position: absolute;
+            /*width: 1200px;*/
+        }
+        .carousel-1>.img-ct>li {
+            float: left;
+            width: 300px;
+            height: 430px;
+        }
+        .carousel-2>.img-ct>li {
+            float: left;
+            width: 600px;
+            height: 400px;
+        }
+        .carousel>.img-ct>li img{
+            width: 100%;
+            height: 100%;
+        }
+        .carousel .btn {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            font-size: 1.25rem;
+            color: #fff;
+            border-radius: 50%;
+            background: #666;
+            opacity: 0.6;
+            cursor: pointer;
+        }
+        .btn-pre {
+            left: 10px;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+        .btn-next {
+            right: 10px;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+        .carousel .bullet {
+            position: absolute;
+            bottom: 50px;
+            width: 100%;
+            text-align: center;
+        }
+        .carousel .bullet>li {
+            display: inline-block;
+            width: 30px;
+            height: 8px;
+            border: 1px solid #0ff;
+            border-radius: 50%;
+            background: #0ff;
+            margin: 0 2px;
+        }
+        .carousel .bullet .active {
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel carousel-1">
+        <ul class="img-ct clearfix">
+            <li data-index="0"><a href="javascript:void(0)"><img src="https://ooo.0o0.ooo/2017/05/10/591263a539eec.png" alt="图片0"></a></li>
+            <li data-index="1"><a href="javascript:void(0)"><img src="https://ooo.0o0.ooo/2017/05/10/591263a77ae5f.png" alt="图片1"></a></li>
+            <li data-index="2"><a href="javascript:void(0)"><img src="https://ooo.0o0.ooo/2017/05/10/591263aae2baf.png" alt="图片2"></a></li>
+            <li data-index="3"><a href="javascript:void(0)"><img src="https://ooo.0o0.ooo/2017/05/10/591263aae4539.png" alt="图片3"></a></li>
+        </ul>
+        <div class="btn btn-pre">&lt;</div>
+        <div class="btn btn-next">&gt;</div>
+        <ul class="bullet">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <div class="carousel carousel-2">
+        <ul class="img-ct clearfix">
+            <li data-index="0"><a href="javascript:void(0)"><img src="http://cdn.jirengu.com/book.jirengu.com/img/11.jpg" alt="图片0"></a></li>
+            <li data-index="1"><a href="javascript:void(0)"><img src="http://cdn.jirengu.com/book.jirengu.com/img/12.jpg" alt="图片1"></a></li>
+            <li data-index="2"><a href="javascript:void(0)"><img src="http://cdn.jirengu.com/book.jirengu.com/img/13.jpg" alt="图片2"></a></li>
+            <li data-index="3"><a href="javascript:void(0)"><img src="http://cdn.jirengu.com/book.jirengu.com/img/14.jpg" alt="图片3"></a></li>
+            <li data-index="4"><a href="javascript:void(0)"><img src="http://cdn.jirengu.com/book.jirengu.com/img/15.jpg" alt="图片0"></a></li>
+            <li data-index="5"><a href="javascript:void(0)"><img src="http://cdn.jirengu.com/book.jirengu.com/img/16.jpg" alt="图片1"></a></li>
+            <li data-index="6"><a href="javascript:void(0)"><img src="http://cdn.jirengu.com/book.jirengu.com/img/17.jpg" alt="图片2"></a></li>
+            <li data-index="7"><a href="javascript:void(0)"><img src="http://cdn.jirengu.com/book.jirengu.com/img/18.jpg" alt="图片3"></a></li>
+        </ul>
+        <div class="btn btn-pre">&lt;</div>
+        <div class="btn btn-next">&gt;</div>
+        <ul class="bullet">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script data-main="js/app/main-carousel.js" src="js/lib/require.min.js"></script>
+
+</body>
+</html>

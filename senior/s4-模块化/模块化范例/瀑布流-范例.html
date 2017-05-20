@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>瀑布流</title>
+    <style>
+        ul,li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .ct {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(0,191,255, 0.5);
+        }
+
+        .ct li {
+            position: absolute;
+            z-index: 0;
+            top: 0;
+            left: 0;
+            width: 300px;
+            margin: 10px;
+            transition: all 1s;
+        }
+
+        .ct img {
+            width: 100%;
+            border: 1px solid #aaa;
+            box-shadow: 5px 5px 3px #aaa;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <ul class="ct">
+        <li class="item">
+            <img data-src="./img/cy (1).jpg" src="" alt="图片1">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (2).jpg" src="" alt="图片2">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (3).jpg" src="" alt="图片3">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (4).jpg" src="" alt="图片4">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (5).jpg" src="" alt="图片5">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (6).jpg" src="" alt="图片6">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (7).jpg" src="" alt="图片7">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (8).jpg" src="" alt="图片8">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (9).jpg" src="" alt="图片9">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (10).jpg" src="" alt="图片10">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (11).jpg" src="" alt="图片11">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (12).jpg" src="" alt="图片12">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (13).jpg" src="" alt="图片13">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (14).jpg" src="" alt="图片14">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (15).jpg" src="" alt="图片15">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (16).jpg" src="" alt="图片16">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (17).jpg" src="" alt="图片17">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (18).jpg" src="" alt="图片18">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (19).jpg" src="" alt="图片19">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (20).jpg" src="" alt="图片20">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (21).jpg" src="" alt="图片21">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (22).jpg" src="" alt="图片22">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (23).jpg" src="" alt="图片23">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (24).jpg" src="" alt="图片24">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (25).jpg" src="" alt="图片25">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (26).jpg" src="" alt="图片26">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (27).jpg" src="" alt="图片27">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (28).jpg" src="" alt="图片28">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (29).jpg" src="" alt="图片29">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (30).jpg" src="" alt="图片30">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (31).jpg" src="" alt="图片31">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (32).jpg" src="" alt="图片32">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (33).jpg" src="" alt="图片33">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (34).jpg" src="" alt="图片34">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (35).jpg" src="" alt="图片35">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (36).jpg" src="" alt="图片36">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (37).jpg" src="" alt="图片37">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (38).jpg" src="" alt="图片38">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (39).jpg" src="" alt="图片39">
+        </li>
+        <li class="item">
+            <img data-src="./img/cy (40).jpg" src="" alt="图片40">
+        </li>
+    </ul>
+
+<script data-main="js/app/main-waterfull.js" src="js/lib/require.min.js"></script>
+
+
+</body>
+</html>
