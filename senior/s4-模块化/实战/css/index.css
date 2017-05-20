@@ -74,6 +74,12 @@ ul, li {
     letter-spacing: 1px;
 }
 
+.nav li:hover {
+    /*color: #fed136;*/
+    background: #fed136;
+    transition: all 1s;
+}
+
 .nav #logo {
     float: left;
     height: 20px;
