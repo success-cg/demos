@@ -70,4 +70,6 @@ var loadMore = (function(){
 module.exports = loadMore
 
 
-//loadMore.init($(".btn"), $("#news"))
+/*使用说明
+loadMore.init($(".btn"), $("#news"))
+*/

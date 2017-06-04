@@ -357,8 +357,6 @@ main .subtitle {
 
 .black-circle {
     display: inline-block;
-    width: 20px;
-    height: 20px;
     padding: 10px;
     background: #222;
     border-radius: 50%;
