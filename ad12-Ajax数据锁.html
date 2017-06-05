@@ -1,0 +1,14 @@
+<script>
+    var dataLock = true; //初始的数据锁是打开的
+    btn.addEventListener("click", function() {
+        if (!dataLock) { //看看数据锁，如果是锁上的，这次点击就没用，退出函数。
+            return; //如果是打开状态，就执行下面的代码
+        }
+        dataLock = false; //先把数据锁锁上，然后去发送请求
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                dataLock = true; //数据到来后，打开数据锁
+            }
+        }
+    })
+</script>

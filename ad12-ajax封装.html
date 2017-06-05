@@ -1,0 +1,41 @@
+<script>
+function ajax(opts){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4){
+            if(xhr.status ===200 || xhr.status ===304){
+                var result = JSON.parse(xhr.responseText);
+                opts.success(result);
+            }else{
+                opts.error();
+            }
+        }
+    }
+    var query = "?";
+    for(var key in opts.data){
+        query += key + "=" + opts.data[key] + "&"
+    }
+    query = query.slice(0, -1)
+    xhr.open(opts.type, opts.url + query, true)
+    xhr.send()
+}
+document.querySelector('#btn').addEventListener('click', function(){
+ajax({
+    url: '/login',   //接口地址
+    type: 'get',               // 类型， post 或者 get,
+    data: {
+        username: 'xiaoming',
+        password: 'abcd1234'
+    },
+    success: function(ret){
+        console.log(ret);       // {status: 0}
+    },
+    error: function(){
+       console.log('出错了')
+    }
+})
+});
+
+
+
+</script>

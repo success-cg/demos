@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        #btn {
+            display: block;
+            font-size: 1.5rem;
+            padding: 5px;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+        .panel {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            width: 300px;
+            border: 1px solid;
+            border-radius: 5px;
+            background: #fff;
+            display: none;
+            z-index: 2;
+        }
+
+        .panel .close {
+            float: right;
+            margin-top: 15px;
+            margin-right: 15px;
+            font-size: 1.15rem;
+            cursor: pointer;
+        }
+
+        .panel .sure,
+        .panel .cancel {
+            border: 1px solid;
+            border-radius: 5px;
+            margin: 5px;
+            padding: 5px;
+            float: right;
+            cursor: pointer;
+        }
+
+        .shadow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ccc;
+            opacity: 0.75;
+            z-index: 1;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">点我跳出模态框</button>
+    <div class="panel clearfix">
+        <div class="close">X</div>
+        <h1>我是一级标题</h1>
+        <p>我是一大段文字</p>
+        <div class="cancel">取消</div>
+        <div class="sure">确定</div>
+
+    </div>
+    <div class="shadow"></div>
+    <script>
+        function $(str) {
+            return document.querySelector(str);
+        }
+
+        var panel = $(".panel");
+        var btn = $("#btn");
+        var close = $(".panel>.close")
+        var shadow = $(".shadow")
+
+        btn.addEventListener("click", function(e) {
+            e.stopPropagation();
+            panel.style.display = "block";
+            shadow.style.display = "block";
+        })
+
+        close.addEventListener("click", function() {
+            panel.style.display = "none";
+            shadow.style.display = "none";
+        })
+
+        panel.addEventListener("click", function(e) {
+            e.stopPropagation();
+        })
+
+        window.addEventListener("click", function() {
+            panel.style.display = "none";
+            shadow.style.display = "none";
+        })
+    </script>
+</body>
+
+</html>

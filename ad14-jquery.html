@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 500px;
+
+            background: #ddd;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+    <ul>
+        <li>内容1</li>
+        <li>内容2</li>
+        <li>内容3</li>
+        <li>内容4</li>
+        <li>内容5</li>
+    </ul>
+    <div class="box">
+        <p>我是测试段落</p>
+    </div>
+    <input type="text" name="uesrname" value="我的一个表单">
+
+    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+$("#btn").bind("click.myClick", function() {
+    console.log("我被点击了")
+})
+        $("#btn").off("click.myClick")
+
+$("ul").on("click", "li", function() {
+    var text = $(this).text()
+    console.log(text)
+})
+/*
+$(".box").css("display", "block");
+$(".box").css("display", "none");
+
+$(".box").show();
+$(".box").hide();
+
+$(".box").fadeIn();
+$(".box").fadeOut();
+
+$(selector).animate(styles, speed, easing, callback)
+
+参数说明：
+styles: 必需，规定产生动画效果的CSS
+speed: 可选，规定动画的速度，默认是normal，可能的值：数字(毫秒)、slow、normalfast
+easing: 可选，规定在不同的动画点中设置动画速度的 easing 函数。内置的 easing 函数： swing linear
+callback: 可选，animate 函数执行完之后，要执行的函数。
+*/
+var css = {
+    width: "500px",
+    opacity: 0.4,
+    marginLeft: "60px",
+    fontSize: "30px"
+}
+
+$(".box").animate(css, "slow", "linear", function(){
+    console.log("动画播放完毕")
+})
+
+$(".box").html() //获取元素内部的html内容，类似于innerHTML
+$(".box").text() //获取元素内部的text文本，类似于innerText
+$(".box").html("<p>设置了一个段落</p>")
+//设置了元素内部的html内容,标签生效
+$(".box").text("设置了一个文本")
+//设置了元素内部的text文本，标签不生效
+
+
+$("input").val()
+$("input").val("改变后的表单")
+
+$("input").attr("type")
+$("input").attr("type", "password")
+$("input").attr({
+    "type": "password",
+    "placeholder": "请输入",
+    "name": "cg"
+})
+
+
+// $("ul").delegate("li", "click", function() {
+//     var text = $(this).text()
+//     console.log(text)
+// })
+    </script>
+</body>
+
+</html>

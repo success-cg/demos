@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        ul,li{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .menu {
+            background: #f00;
+            width: 200px;
+        }
+        .menu>li {
+            position: relative;
+            padding: 5px 10px;
+            color: #fff;
+            border-bottom: 1px solid #fff;
+        }
+        .sec-menu {
+            position: absolute;
+            z-index: 1;
+            left: 100%;
+            top: 0;
+            width: 202px;
+            padding: 0;
+            background: #fff;
+            color: #000;
+            border: 1px solid #ccc;
+            display: none;
+        }
+        .sec-menu>li{
+            float: left;
+            width: 100px;
+            /*border: 1px solid #ccc;*/
+            padding: 5px 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <ul class="menu">
+        <li>
+            珠宝玉器
+            <ul class="sec-menu">
+                <li>翡翠</li>
+                <li>玉石</li>
+                <li>水晶</li>
+                <li>玛瑙</li>
+                <li>珍珠</li>
+                <li>钻石</li>
+            </ul>
+        </li>
+        <li>
+            珠宝玉器
+            <ul class="sec-menu">
+                <li>翡翠</li>
+                <li>玉石</li>
+                <li>水晶</li>
+                <li>玛瑙</li>
+                <li>珍珠</li>
+                <li>钻石</li>
+            </ul>
+        </li>
+        <li>
+            珠宝玉器
+            <ul class="sec-menu">
+                <li>翡翠</li>
+                <li>玉石</li>
+                <li>水晶</li>
+                <li>玛瑙</li>
+                <li>珍珠</li>
+                <li>钻石</li>
+            </ul>
+        </li>
+        <li>
+            珠宝玉器
+            <ul class="sec-menu">
+                <li>翡翠</li>
+                <li>玉石</li>
+                <li>水晶</li>
+                <li>玛瑙</li>
+                <li>珍珠</li>
+                <li>钻石</li>
+            </ul>
+        </li>
+        <li>
+            珠宝玉器
+            <ul class="sec-menu">
+                <li>翡翠</li>
+                <li>玉石</li>
+                <li>水晶</li>
+                <li>玛瑙</li>
+                <li>珍珠</li>
+                <li>钻石</li>
+            </ul>
+        </li>
+    </ul>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(".menu").on("mouseenter", "li", function(){
+
+            $(this).children(".sec-menu").css("display", "block")
+        })
+
+        $(".menu").on("mouseleave", "li", function(){
+
+            $(this).children(".sec-menu").css("display", "none")
+        })
+
+
+    </script>
+</body>
+</html>
